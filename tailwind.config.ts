@@ -20,9 +20,9 @@ const config: Config = {
     nextui({
       layout: {
         radius: {
-          small: "2px",
-          medium: "2px",
-          large: "2px",
+          small: "20px",
+          medium: "20px",
+          large: "20px",
         },
       },
     }),
