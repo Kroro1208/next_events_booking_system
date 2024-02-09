@@ -1,5 +1,6 @@
-'use client';
+import { connectDB } from "../config/dbConfig";
 import { UserButton } from "@clerk/nextjs";
+connectDB();
 
 export default function Home() {
   return (
