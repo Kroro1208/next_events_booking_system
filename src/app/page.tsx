@@ -9,8 +9,8 @@ export default async function Home() {
   const mongoUserId = await getMongoDBUserIDofLoggedInUser();
   console.log('mongoUserID', mongoUserId);
   return (
-    <div className="p-10">
-      <UserButton afterSignOutUrl="/" />
+    <div>
+      <h1>Home Page</h1>
     </div>
   );
 }

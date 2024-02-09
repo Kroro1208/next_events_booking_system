@@ -4,7 +4,6 @@ import { currentUser } from "@clerk/nextjs";
 connectDB();
 
 // 現在ログインしているユーザーの情報を取得
-
 export const handleNewUserRegistration = async () => {
   try {
     const loggedInUser = await currentUser();
@@ -30,7 +29,7 @@ export const handleNewUserRegistration = async () => {
   }
 };
 
-// 現在ログインしているユーザーの情報を取得します。
+// 現在ログインしているユーザーの情報を取得
 export const getMongoDBUserIDofLoggedInUser = async () => {
   try {
     const loggedInUser = await currentUser();

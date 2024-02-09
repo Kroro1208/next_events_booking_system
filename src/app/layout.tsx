@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import UILibraryProvider from "../providers/UILibraryProvider";
 import { ClerkProvider } from "@clerk/nextjs";
+import LayoutProvider from "../providers/LayoutProvider";
 
 const noto_sans = Noto_Sans_JP({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
       <html lang="ja">
         <body className={noto_sans.className}>
           <UILibraryProvider>
-            {children}
+            <LayoutProvider>
+              {children}
+            </LayoutProvider>
           </UILibraryProvider>
         </body>
       </html>
