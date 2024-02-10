@@ -73,7 +73,9 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
         <div className='bg-gray-200 w-full h-screen lg:px-20 px-5'>
             {isPrivateRoute && (
                 <div className='bg-white flex justify-between items-center shadow p-10 py-5 rounded-xl'>
-                    <h1 className='text-gray-600 font-semibold text-2xl'>Next Events Book</h1>
+                    <h1 className='text-gray-900 font-semibold text-2xl cursor-pointer'
+                        onClick={() => router.push("/")}
+                    >Next Events Book</h1>
                     <div className='flex gap-5 items-center'>
                         <Dropdown>
                             <DropdownTrigger>

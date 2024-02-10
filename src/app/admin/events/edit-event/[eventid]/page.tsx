@@ -1,8 +1,11 @@
+import PageTitle from '@/src/components/PageTitle'
 import React from 'react'
 
 function EditEventsPage() {
     return (
-        <div>EditEventsPage</div>
+        <div>
+            <PageTitle title="Edit Event" />
+        </div>
     )
 }
 
