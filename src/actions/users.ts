@@ -22,10 +22,11 @@ export const handleNewUserRegistration = async () => {
       email: loggedInUser?.emailAddresses[0].emailAddress,
       clerkUserId: loggedInUser?.id,
     });
+    console.log(newUser);
     await newUser.save();
     return newUser; // 新しく作成されたユーザー、または既存のユーザーの情報を返す
   } catch (error: any) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };
 
@@ -40,6 +41,6 @@ export const getMongoDBUserIDofLoggedInUser = async () => {
     // ユーザーがデータベースに存在する場合、そのMongoDBのドキュメントID（_id）を返す
     if (userInMongoDB) return userInMongoDB._id;
   } catch (error: any) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };

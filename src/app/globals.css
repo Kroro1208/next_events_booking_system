@@ -6,3 +6,11 @@
 .cl-internal-b3fm6y {
   display: none !important;
 }
+
+* {
+  font-weight: 500 !important;
+}
+
+.font-semibold {
+  font-weight: 700 !important;
+}

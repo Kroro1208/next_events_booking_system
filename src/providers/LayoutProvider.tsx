@@ -69,14 +69,14 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     return (
-        <div className='bg-gray-200 w-full h-screen'>
+        <div className='bg-gray-200 w-full h-screen lg:px-20 px-5'>
             {isPrivateRoute && (
-                <div className='bg-white flex justify-between items-center shadow p-3 rounded-2xl'>
+                <div className='bg-white flex justify-between items-center shadow p-10 py-5 rounded-2xl'>
                     <h1 className='text-gray-600 font-semibold text-2xl'>Next Events Book</h1>
                     <div className='flex gap-5 items-center'>
                         <Dropdown>
                             <DropdownTrigger>
-                                <Button variant="bordered">Profile</Button>
+                                <Button className="bg-black py-2 px-4 rounded-2xl shadow-lg text-white hover:bg-gray-700 hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out">Profile</Button>
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Static Actions">
                                 {menusToShow.map((menu) => (
