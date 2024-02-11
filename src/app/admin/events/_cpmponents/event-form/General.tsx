@@ -6,6 +6,13 @@ export interface EventFormStepProps {
   setEvent: React.Dispatch<React.SetStateAction<any>>;
   activeStep: number;
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  newlySelectedImages: any[];
+  setNewlySelectedImages: React.Dispatch<React.SetStateAction<any[]>>;
+}
+
+export interface NewlySelectedImage {
+  url: string;
+  file: File;
 }
 
 function General({ event, setEvent, activeStep, setActiveStep }: EventFormStepProps) {

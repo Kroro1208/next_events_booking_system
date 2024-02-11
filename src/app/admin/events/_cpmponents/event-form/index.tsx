@@ -9,6 +9,7 @@ import Tickets from './Tickets'
 
 function EventForm() {
     const [activeStep = 0, setActiveStep] = useState<number>(0);
+    const [newlySelectedImages = [], setNewlySelectedImages] = useState<any>([]);
     const [event, setEvent] = useState<any>(null);
     const onSubmit = (e: any) => {
         e.preventDefault();
@@ -18,14 +19,20 @@ function EventForm() {
         event,
         setEvent,
         activeStep,
-        setActiveStep
+        setActiveStep,
+        newlySelectedImages,
+        setNewlySelectedImages
     }
 
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <Steps stepNames={['General', 'Location & Date', 'Media', 'Tickets']}
-                    stepsContent={[<General {...commonProps} />, <LocationAndDate {...commonProps} />, <Media {...commonProps} />, <Tickets {...commonProps} />]}
+                    stepsContent={[
+                        <General {...commonProps} />,
+                        <LocationAndDate {...commonProps} />,
+                        <Media {...commonProps} />,
+                        <Tickets {...commonProps} />]}
                     activeStep={activeStep}
                 />
             </form>
