@@ -1,6 +1,7 @@
 import React from 'react'
+import { EventFormStepProps } from './General'
 
-function Tickets() {
+function Tickets({ }: EventFormStepProps) {
     return (
         <div>Tickets</div>
     )

@@ -18,7 +18,7 @@ export const handleNewUserRegistration = async () => {
 
     // ユーザーが存在しない場合、新しいユーザーレコードをデータベースに作成し、保存
     const newUser = new UserModel({
-      username: loggedInUser?.username,
+      username: loggedInUser?.username || "defaultUsername",
       email: loggedInUser?.emailAddresses[0].emailAddress,
       clerkUserId: loggedInUser?.id,
     });
@@ -39,6 +39,7 @@ export const getMongoDBUserIDofLoggedInUser = async () => {
       clerkUserId: loggedInUser?.id,
     });
     // ユーザーがデータベースに存在する場合、そのMongoDBのドキュメントID（_id）を返す
+    console.log(loggedInUser);
     if (userInMongoDB) return userInMongoDB._id;
   } catch (error: any) {
     throw new Error(error.message);
