@@ -18,14 +18,17 @@ function Steps({ stepNames, stepsContent, activeStep }: StepsProps) {
                                 <div
                                     className={`h-8 w-8 rounded-full  flex justify-center items-center
                                     ${activeStep >= index
-                                            ? "bg-black text-white"
+                                            ? "bg-blue-600 text-white"
                                             : "bg-gray-500 text-gray-200"
                                         }`}>
                                     {index + 1}
                                 </div>
 
-                                {activeStep >= index && activeStep !== stepNames.length - 1 && (
-                                    <div className="h-1 w-full bg-black"></div>
+                                {activeStep > index && activeStep !== stepNames.length - 1 && (
+                                    <div className="h-1 w-full bg-blue-600"></div>
+                                )}
+                                {activeStep <= index && index !== stepNames.length - 1 && (
+                                    <div className="h-1 w-full bg-gray-200"></div>
                                 )}
                             </div>
                             <h1 className="text-sm">{stepName}</h1>

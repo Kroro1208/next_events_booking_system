@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="ja">
-        <body className={noto_sans.className}>
+        <body className={`bg-gray-200 ${noto_sans.className} h-screen`}>
           <UILibraryProvider>
             <LayoutProvider>
               {children}

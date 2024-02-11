@@ -70,7 +70,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     return (
-        <div className='bg-gray-200 w-full h-screen lg:px-20 px-5'>
+        <div className='bg-gray-200 w-full lg:px-20 px-5'>
             {isPrivateRoute && (
                 <div className='bg-white flex justify-between items-center shadow p-10 py-5 rounded-xl'>
                     <h1 className='text-gray-900 font-semibold text-2xl cursor-pointer'
