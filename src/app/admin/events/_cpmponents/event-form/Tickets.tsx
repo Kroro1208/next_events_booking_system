@@ -72,7 +72,8 @@ function Tickets({ event, setEvent, activeStep, setActiveStep }: EventFormStepPr
             <div className="flex justify-center gap-5">
                 <Button onClick={() => { setActiveStep(activeStep - 1) }}>戻る</Button>
                 <Button type='submit' color='primary'
-                    isDisabled={!event?.ticketTypes?.every((ticketType: any) =>
+                    // ticketTypes配列が空ではないことを確認(everyメソッドは空の配列に対してtrueを返すため、ボタンが活性化されてしまう問題)
+                    isDisabled={!(event?.ticketTypes?.length > 0) || !event?.ticketTypes?.every((ticketType: any) =>
                         ticketType.name &&
                         ticketType.price > 0 &&
                         ticketType.limit > 0

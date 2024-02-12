@@ -19,7 +19,7 @@ function LocationAndDate({ event, setEvent, activeStep, setActiveStep }: EventFo
                     placeholder='Date'
                     label='Date'
                     labelPlacement='outside'
-                    value={event?.Date}
+                    value={event?.date}
                     onChange={(e) => setEvent({ ...event, date: e.target.value })}
                     isRequired
                     type='date'
@@ -29,7 +29,7 @@ function LocationAndDate({ event, setEvent, activeStep, setActiveStep }: EventFo
                     placeholder='Time'
                     label='Time'
                     labelPlacement='outside'
-                    value={event?.Time}
+                    value={event?.time}
                     onChange={(e) => setEvent({ ...event, time: e.target.value })}
                     isRequired
                     type='time'
