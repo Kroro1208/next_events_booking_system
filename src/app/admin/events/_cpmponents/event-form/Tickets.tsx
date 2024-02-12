@@ -71,7 +71,12 @@ function Tickets({ event, setEvent, activeStep, setActiveStep }: EventFormStepPr
                 onClick={onAddTicketType}><i className="ri-coupon-3-line"></i>チケットの種類を追加する</Button>
             <div className="flex justify-center gap-5">
                 <Button onClick={() => { setActiveStep(activeStep - 1) }}>戻る</Button>
-                <Button type='submit' color='primary' isDisabled={event?.ticketTypes?.length === 0}>登録する</Button>
+                <Button type='submit' color='primary'
+                    isDisabled={!event?.ticketTypes?.every((ticketType: any) =>
+                        ticketType.name &&
+                        ticketType.price > 0 &&
+                        ticketType.limit > 0
+                    )}>登録する</Button>
             </div>
         </div>
     )
