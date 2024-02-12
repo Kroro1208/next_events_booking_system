@@ -76,7 +76,10 @@ function General({ event, setEvent, activeStep, setActiveStep }: EventFormStepPr
           placeholder='ゲストを入力してください'
           onChange={(e) => setGuest(e.target.value)}
         />
-        <Button color="primary" onClick={onGuestAdd}>追加する</Button>
+        {/* <Button color="blue" onClick={onGuestAdd}>追加する</Button> */}
+        <Button radius="full" onClick={onGuestAdd} className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out">
+          追加する
+        </Button>
       </div>
 
       <div className="flex flex-wrap gap-5">
