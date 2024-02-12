@@ -4,7 +4,7 @@ import { EventFormStepProps } from './General'
 import { Button } from '@nextui-org/react'
 import toast from 'react-hot-toast'
 
-function Media({ newlySelectedImages, setNewlySelectedImages }: EventFormStepProps) {
+function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setActiveStep }: EventFormStepProps) {
 
     const uploadFileRef = useRef<HTMLInputElement>(null);
     const onFileSelect = (e: any) => {
@@ -55,6 +55,11 @@ function Media({ newlySelectedImages, setNewlySelectedImages }: EventFormStepPro
                         >削除</h1>
                     </div>
                 ))}
+            </div>
+            <div className="flex justify-center gap-5">
+                <Button onClick={() => { setActiveStep(activeStep - 1) }}>戻る</Button>
+                <Button onClick={() => setActiveStep(activeStep + 1)} color='primary'
+                >次の入力画面へ</Button>
             </div>
         </div>
     )

@@ -24,7 +24,7 @@ function Steps({ stepNames, stepsContent, activeStep }: StepsProps) {
                                     {index + 1}
                                 </div>
 
-                                {activeStep > index && activeStep !== stepNames.length - 1 && (
+                                {activeStep > index && index !== stepNames.length - 1 && (
                                     <div className="h-1 w-full bg-blue-600"></div>
                                 )}
                                 {activeStep <= index && index !== stepNames.length - 1 && (
