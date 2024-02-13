@@ -77,7 +77,9 @@ function Tickets({ event, setEvent, activeStep, setActiveStep, loading }: EventF
                         ticketType.name &&
                         ticketType.price > 0 &&
                         ticketType.limit > 0
-                    )} isLoading={loading}>登録する</Button>
+                    )} isLoading={loading}
+                    className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out"
+                >登録する</Button>
             </div>
         </div>
     )
