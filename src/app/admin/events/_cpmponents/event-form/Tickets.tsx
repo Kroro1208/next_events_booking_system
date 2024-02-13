@@ -4,7 +4,7 @@ import { Button, Input } from '@nextui-org/react'
 import toast from 'react-hot-toast';
 
 
-function Tickets({ event, setEvent, activeStep, setActiveStep }: EventFormStepProps) {
+function Tickets({ event, setEvent, activeStep, setActiveStep, loading }: EventFormStepProps) {
     const onAddTicketType = () => {
         try {
             const tempEvent = { ...event };
@@ -77,7 +77,7 @@ function Tickets({ event, setEvent, activeStep, setActiveStep }: EventFormStepPr
                         ticketType.name &&
                         ticketType.price > 0 &&
                         ticketType.limit > 0
-                    )}>登録する</Button>
+                    )} isLoading={loading}>登録する</Button>
             </div>
         </div>
     )

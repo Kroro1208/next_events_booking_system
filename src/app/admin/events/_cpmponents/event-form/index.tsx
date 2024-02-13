@@ -8,20 +8,32 @@ import Media from './Media'
 import Tickets from './Tickets'
 import { uploadImageToFirebaseAndGetUrls } from '@/src/helpers/image-upload'
 import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 function EventForm() {
     const [activeStep = 0, setActiveStep] = useState<number>(0);
     const [newlySelectedImages = [], setNewlySelectedImages] = useState<any>([]);
     const [event, setEvent] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+    const router = useRouter();
 
     const handleFormSubmit = async () => {
         try {
+            setLoading(true);
             event.images = await uploadImageToFirebaseAndGetUrls(newlySelectedImages.map((image: any) => image.file));
-            console.log(event);
+            await axios.post("/api/admin/events", event);
+            toast.success("イベントの作成に成功しました");
+            router.refresh();
+            router.push("/admin/events");
+            // console.log(event);
         } catch (error: any) {
             toast.error(error.message);
+        } finally {
+            setLoading(false);
         }
-    }
+    };
+
     const onSubmit = (e: any) => {
         e.preventDefault();
         handleFormSubmit();
@@ -33,8 +45,9 @@ function EventForm() {
         activeStep,
         setActiveStep,
         newlySelectedImages,
-        setNewlySelectedImages
-    }
+        setNewlySelectedImages,
+        loading,
+    };
 
     return (
         <div>
