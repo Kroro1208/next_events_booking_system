@@ -12,14 +12,12 @@ function Tickets({ event, setEvent, activeStep, setActiveStep, loading }: EventF
                 tempEvent.ticketTypes.push({
                     name: "",
                     price: 0,
-                    quantity: 0,
                     limit: 0
                 });
             } else {
                 tempEvent.ticketTypes = [{ // eventオブジェクトにticketTypesがなければticketTypesオブジェクトを作成
                     name: "",
                     price: 0,
-                    quantity: 0,
                     limit: 0
                 }];
             }

@@ -79,7 +79,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
                     <div className='flex gap-5 items-center'>
                         <Dropdown>
                             <DropdownTrigger>
-                                <Button className="bg-black py-2 px-4 rounded-3xl shadow-lg text-white hover:bg-gray-700 hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out">Profile</Button>
+                                <Button className="bg-gradient-to-tr from-gray-800 to-gray-400 py-2 px-4 rounded-3xl shadow-lg text-white hover:bg-gray-700 hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out">Profile</Button>
                             </DropdownTrigger>
                             <DropdownMenu aria-label="Static Actions">
                                 {menusToShow.map((menu) => (
