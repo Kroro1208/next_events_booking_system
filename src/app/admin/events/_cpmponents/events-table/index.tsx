@@ -19,6 +19,7 @@ function EventsTable({ events }: { events: EventType[] }) {
             setLoading(true);
             await axios.delete(`/api/admin/events/${id}`);
             toast.success("イベントの削除に成功しました");
+            router.refresh();
         } catch (error: any) {
             toast.error(error.message);
         } finally {
@@ -53,7 +54,7 @@ function EventsTable({ events }: { events: EventType[] }) {
                                         // isLoadingは@nextui-org/reactがサポートしているButtonコンポーネント内で表示できるspinner
                                         isLoading={loading && selectedIdToDelete === event._id!}
                                         className="bg-red-300 hover:bg-red-500 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out">
-                                        {!loading && selectedIdToDelete !== event._id && (
+                                        {!loading && selectedIdToDelete !== event._id && ( // Loading中は隠す(いらないかも)
                                             <i className="ri-delete-bin-6-line"></i>
                                         )}
                                     </Button>
