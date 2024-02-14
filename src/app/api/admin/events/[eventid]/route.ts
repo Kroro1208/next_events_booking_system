@@ -40,8 +40,7 @@ export async function DELETE(
         { status: 401 }
       );
 
-    const reqBody = await request.json();
-    await EventModel.findByIdAndUpdate(params.eventid, reqBody);
+    await EventModel.findByIdAndDelete(params.eventid);
     return NextResponse.json(
       { message: "イベント情報が更新されました" },
       { status: 201 }
