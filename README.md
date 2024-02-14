@@ -7,3 +7,4 @@
 
 ![挙動確認](README用.gif)
 ![挙動確認](README用2.gif)
+![挙動確認](README4.gif)
