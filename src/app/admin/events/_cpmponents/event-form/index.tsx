@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Steps from '@/src/components/Steps'
 import React from 'react'
 import General from './General'
@@ -7,11 +7,16 @@ import LocationAndDate from './LocationAndDate'
 import Media from './Media'
 import Tickets from './Tickets'
 import { uploadImageToFirebaseAndGetUrls } from '@/src/helpers/image-upload'
-import toast from 'react-hot-toast'
-import axios from 'axios'
-import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
-function EventForm() {
+interface Props {
+    initialData?: any;
+    type?: "edit" | "create";
+}
+
+function EventForm({ initialData, type = "create" }: Props) {
     const [activeStep = 0, setActiveStep] = useState<number>(0);
     const [newlySelectedImages = [], setNewlySelectedImages] = useState<any>([]);
     const [event, setEvent] = useState<any>(null);
@@ -48,6 +53,12 @@ function EventForm() {
         setNewlySelectedImages,
         loading,
     };
+
+    useEffect(() => {
+        if (initialData) {
+            setEvent(initialData);
+        }
+    }, [initialData]);
 
     return (
         <div>

@@ -4,6 +4,8 @@ import EventModel from '@/src/models/event-model';
 import { Link } from '@nextui-org/react';
 import React from 'react';
 import EventsTable from './_cpmponents/events-table';
+import { connectDB } from '@/src/config/dbConfig';
+connectDB();
 
 
 
