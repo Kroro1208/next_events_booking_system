@@ -17,6 +17,7 @@ interface Props {
 }
 
 function EventForm({ initialData, type = "create" }: Props) {
+    const [previousImages, setPreviousImages] = useState<string[]>([]); // 画像はURLが配列内にstringで保存されている
     const [activeStep = 0, setActiveStep] = useState<number>(0);
     const [newlySelectedImages = [], setNewlySelectedImages] = useState<any>([]);
     const [event, setEvent] = useState<any>(null);
@@ -26,11 +27,22 @@ function EventForm({ initialData, type = "create" }: Props) {
     const handleFormSubmit = async () => {
         try {
             setLoading(true);
-            event.images = await uploadImageToFirebaseAndGetUrls(newlySelectedImages.map((image: any) => image.file));
-            await axios.post("/api/admin/events", event);
-            toast.success("イベントの作成に成功しました");
-            router.refresh();
-            router.push("/admin/events");
+            if (type === "create") {
+                event.images = await uploadImageToFirebaseAndGetUrls(newlySelectedImages.map((image: any) => image.file));
+                await axios.post("/api/admin/events", event);
+                toast.success("イベントの作成に成功しました");
+                router.refresh();
+                router.push("/admin/events");
+            } else { // editの場合、画像を追加してアップロード
+                const newlyUploadedImageUrls = await uploadImageToFirebaseAndGetUrls(
+                    newlySelectedImages.map((image: any) => image.file)
+                );
+                event.images = [...previousImages, ...newlyUploadedImageUrls];
+                await axios.put(`/api/admin/events/${event._id}`, event);
+                toast.success("イベントの更新に成功しました");
+                router.refresh();
+                router.push("/admin/events");
+            }
             // console.log(event);
         } catch (error: any) {
             toast.error(error.message);
@@ -51,12 +63,15 @@ function EventForm({ initialData, type = "create" }: Props) {
         setActiveStep,
         newlySelectedImages,
         setNewlySelectedImages,
-        loading,
+        previousImages,
+        setPreviousImages,
+        loading
     };
 
     useEffect(() => {
         if (initialData) {
             setEvent(initialData);
+            setPreviousImages(initialData.images);
         }
     }, [initialData]);
 

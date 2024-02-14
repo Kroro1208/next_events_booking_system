@@ -4,7 +4,7 @@ import { EventFormStepProps } from './General'
 import { Button } from '@nextui-org/react'
 import toast from 'react-hot-toast'
 
-function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setActiveStep }: EventFormStepProps) {
+function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setActiveStep, previousImages, setPreviousImages }: EventFormStepProps) {
 
     const uploadFileRef = useRef<HTMLInputElement>(null);
     const onFileSelect = (e: any) => {
@@ -25,10 +25,16 @@ function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setAct
         }
     };
 
-    const onRemove = (index: number) => {
+    const onNewImageRemove = (index: number) => {
         const tempImages: any = [...newlySelectedImages];
         tempImages.splice(index, 1);
         setNewlySelectedImages(tempImages);
+    };
+
+    const onPreviousImageRemove = (index: number) => {
+        const tempImages: any = [...previousImages];
+        tempImages.splice(index, 1);
+        setPreviousImages(tempImages);
     };
 
     return (
@@ -45,17 +51,30 @@ function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setAct
 
             {/* 画像を選択した後に画面上に表示させる */}
             <div className='flex gap-5'>
+
+                {previousImages?.map((image: any, index: number) => (
+                    <div className="border-2 border-gray-300 flex flex-col gap-5 rounded-xl pb-5">
+                        <img key={index} src={image} alt="newly selected"
+                            className='w-40 h-40 object-cover rounded-xl'
+                        />
+                        <h1 className='text-center cursor-pointer text-sm underline'
+                            onClick={() => onPreviousImageRemove(index)}
+                        >削除</h1>
+                    </div>
+                ))}
+
                 {newlySelectedImages?.map((image: any, index: number) => (
                     <div className="border-2 border-gray-300 flex flex-col gap-5 rounded-xl pb-5">
                         <img key={index} src={image.url} alt="newly selected"
                             className='w-40 h-40 object-cover rounded-xl'
                         />
                         <h1 className='text-center cursor-pointer text-sm underline'
-                            onClick={() => onRemove(index)}
+                            onClick={() => onNewImageRemove(index)}
                         >削除</h1>
                     </div>
                 ))}
             </div>
+
             <div className="flex justify-center gap-5">
                 <Button onClick={() => { setActiveStep(activeStep - 1) }}>戻る</Button>
                 <Button onClick={() => setActiveStep(activeStep + 1)} color='primary'

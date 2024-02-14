@@ -4,10 +4,16 @@ import { Button, Input, Textarea, Chip } from '@nextui-org/react'
 export interface EventFormStepProps {
   event: any;
   setEvent: React.Dispatch<React.SetStateAction<any>>;
+
   activeStep: number;
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+
   newlySelectedImages: any[];
   setNewlySelectedImages: React.Dispatch<React.SetStateAction<any[]>>;
+
+  previousImages: string[];
+  setPreviousImages: React.Dispatch<React.SetStateAction<any[]>>;
+
   loading: boolean;
 }
 
