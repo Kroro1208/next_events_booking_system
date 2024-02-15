@@ -2,6 +2,7 @@ import { connectDB } from '@/src/config/dbConfig'
 import { EventType } from '@/src/interfaces/events';
 import EventModel from '@/src/models/event-model'
 import React from 'react'
+import TicketSelection from '../_components/ticket-selection';
 connectDB();
 
 interface Props {
@@ -48,16 +49,17 @@ async function BookEventpage({ params }: Props) {
                     {event.description}
                 </p>
 
-                <div className="mt-7 border border-gray-200 p-3 rounded-xl grid grid-cols-3 gap-5">
+                <div className="mt-7 border border-gray-200 p-3 rounded-xl grid grid-cols-1 gap-5">
                     {getEventProperty('organizer')}
                     {getEventProperty('location')}
                     {getEventProperty('date')}
                     {getEventProperty('time')}
+
                     <div className='flex flex-col'>
                         <h1 className='font-semibold capitalize'>メインゲスト</h1>
                         <h1 className='text-gray-600'>{event.guests.join(", ")}</h1>
                     </div>
-
+                    <TicketSelection event={JSON.parse(JSON.stringify(event))} />
                 </div>
             </div>
         </div>
