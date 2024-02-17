@@ -5,7 +5,9 @@
 
 # 途中経過
 
+※最下部が最新状態
 ![挙動確認](README用.gif)
 ![挙動確認](README用2.gif)
 ![挙動確認](README4.gif)
 ![挙動確認](README3.gif)
+![挙動確認](README5.gif)
