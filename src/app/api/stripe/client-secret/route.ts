@@ -12,6 +12,7 @@ export async function POST(request: NextRequest) {
       amount: amount,
       currency: "jpy",
       metadata: { integration_check: "accept_a_payment" },
+      description: "NEXT EVENT BOOKでのお支払い",
     });
 
     const clientSecret = paymentIntent.client_secret;

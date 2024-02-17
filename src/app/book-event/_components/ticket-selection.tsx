@@ -91,7 +91,9 @@ function TicketSelection({ event }: TicketSelectionProps) {
                 <h1 className='font-semibold text-2xl uppercase text-gray-500'>
                     合計: <b className='text-primary'>{totalAmount} 円</b>
                 </h1>
-                <Button onClick={() => setShowPaymentModal(true)} className="relative rounded-2xl inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                <Button onClick={() => setShowPaymentModal(true)}
+                    isLoading={loading}
+                    className="relative rounded-2xl inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                     <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-2xl group-hover:bg-opacity-0">
                         購入する
                     </span>
@@ -99,11 +101,16 @@ function TicketSelection({ event }: TicketSelectionProps) {
                 {/* <Button className='bg-gradient-to-tr rounded-xl p-5 from-pink-500 to-yellow-500 text-white shadow-lg hover:-translate-y-1.5 transition duration-500 ease-in-out cursor-pointer'></Button> */}
             </div>
 
-            <Elements stripe={stripePromise} options={{
-                clientSecret
-            }}>
-                <PaymentModal />
-            </Elements>
+            {showPaymentModal && clientSecret && (
+                <Elements stripe={stripePromise} options={{
+                    clientSecret
+                }}>
+                    <PaymentModal
+                        showPaymentModal={showPaymentModal}
+                        setShowPaymentModal={setShowPaymentModal}
+                    />
+                </Elements>
+            )}
         </div>
 
     );
