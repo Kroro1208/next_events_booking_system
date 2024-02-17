@@ -11,7 +11,7 @@ interface Props {
     }
 }
 
-async function BookEventpage({ params }: Props) {
+async function BookEventPage({ params }: Props) {
     const event: EventType = await EventModel.findById(params.eventid) as any;
     const getEventProperty = (property: string) => {
         return <div className='flex flex-col'>
@@ -66,4 +66,4 @@ async function BookEventpage({ params }: Props) {
     )
 }
 
-export default BookEventpage
+export default BookEventPage
