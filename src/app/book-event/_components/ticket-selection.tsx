@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import PaymentModal from './payment-modal';
 
 const stripePromise = loadStripe('pk_test_51ORmOaCnXs4jpJa18hC08mHfzMBD2fpZ0y71v644J6P95jXwNKOESA5D43yX4Lvplfc4LzKzUwttqpsk1XVXEwXD00mW0bAs34');
-
+// sk_test_51ORmOaCnXs4jpJa1UHjjAzzzeNQi5VsKVngpePKariBOTZZvnabhYRHHhXfGazDF81fNmRwR4EmylGa1zsWt0Qtt00SALwSqCG
 interface TicketSelectionProps {
     event: EventType;
     eventBookings: any;

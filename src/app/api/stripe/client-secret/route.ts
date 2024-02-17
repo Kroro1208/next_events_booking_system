@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "jpy",
-      metadata: { integration_check: "accept_a_payment" },
+      metadata: { integration_check: "お支払いを受け付けました" },
       description: "NEXT EVENT BOOKでのお支払い",
     });
 
