@@ -79,7 +79,7 @@ function TicketSelection({ event }: TicketSelectionProps) {
                 <h1 className='text-xl font-semibold text-gray-700'>チケット枚数を選択してください</h1>
                 <div className="flex flex-wrap gap-1 mt-2">
                     {[...Array(10)].map((_, index) => (
-                        <div className={`${ticketCount === index + 1 ? 'border-indigo-600' : "border-gray-200"} bg-gray-100 border border-gray-300 h-12 w-14 rounded flex justify-center items-center hover:-translate-y-1.5 transition duration-300 ease-in-out cursor-pointer`}
+                        <div key={index} className={`${ticketCount === index + 1 ? 'border-indigo-600' : "border-gray-200"} bg-gray-100 border border-gray-300 h-12 w-14 rounded flex justify-center items-center hover:-translate-y-1.5 transition duration-300 ease-in-out cursor-pointer`}
                             onClick={() => setTicketCount(index + 1)}
                         >
                             {index + 1}
