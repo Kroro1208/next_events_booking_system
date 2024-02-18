@@ -39,6 +39,7 @@ function TicketSelection({ event }: TicketSelectionProps) {
     // フロントエンド側の処理
     const getClientSecret = async () => {
         try {
+            setLoading(true);
             const response = await axios.post("/api/stripe/client-secret", {
                 amount: totalAmount
             });
