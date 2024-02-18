@@ -11,11 +11,12 @@ export async function POST(request: NextRequest) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "jpy",
-      metadata: { integration_check: "お支払いを受け付けました" },
+      metadata: { integration_check: "注文を受け付けました" },
       description: "NEXT EVENT BOOKでのお支払い",
     });
 
     const clientSecret = paymentIntent.client_secret;
+
     return NextResponse.json({ clientSecret: clientSecret });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
