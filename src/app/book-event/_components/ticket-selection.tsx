@@ -8,7 +8,10 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import PaymentModal from './payment-modal';
 
-const stripePromise = loadStripe('pk_test_51ORmOaCnXs4jpJa18hC08mHfzMBD2fpZ0y71v644J6P95jXwNKOESA5D43yX4Lvplfc4LzKzUwttqpsk1XVXEwXD00mW0bAs34');
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
+    throw new Error('Stripeの公開可能キーが設定されていません。');
+}
 
 interface TicketSelectionProps {
     event: EventType;

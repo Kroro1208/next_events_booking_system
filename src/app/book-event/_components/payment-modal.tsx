@@ -51,6 +51,7 @@ function PaymentModal({ showPaymentModal, setShowPaymentModal, event, ticketType
                     paymentId: result.paymentIntent?.id
                 }
                 await axios.post("/api/bookings", reqBody);
+                console.log(reqBody);
                 toast.success("イベントの参加予約が完了しました");
                 router.push("/bookings");
             }
