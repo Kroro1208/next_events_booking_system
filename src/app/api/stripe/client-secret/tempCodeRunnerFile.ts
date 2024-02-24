@@ -1,1 +1,0 @@
-    const clientSecret = paymentIntent.client_secret;
