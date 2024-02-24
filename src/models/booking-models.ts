@@ -31,7 +31,7 @@ const bookingSchema = new mongoose.Schema(
 );
 
 if (mongoose.models && mongoose.models.bookings) {
-  delete mongoose.models.booking;
+  delete mongoose.models.bookings;
 }
 
 const BookingModel = mongoose.model("bookings", bookingSchema);

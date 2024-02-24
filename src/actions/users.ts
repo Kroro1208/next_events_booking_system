@@ -18,7 +18,9 @@ export const handleNewUserRegistration = async () => {
 
     // ユーザーが存在しない場合、新しいユーザーレコードをデータベースに作成し、保存
     const newUser = new UserModel({
-      username: loggedInUser?.username || "defaultUsername",
+      username:
+        loggedInUser?.username ||
+        `${loggedInUser?.firstName} ${loggedInUser?.lastName}`,
       email: loggedInUser?.emailAddresses[0].emailAddress,
       clerkUserId: loggedInUser?.id,
     });

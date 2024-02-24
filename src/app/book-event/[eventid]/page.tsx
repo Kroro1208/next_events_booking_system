@@ -3,16 +3,19 @@ import { EventType } from '@/src/interfaces/events';
 import EventModel from '@/src/models/event-model'
 import React from 'react'
 import TicketSelection from '../_components/ticket-selection';
+import BookingModel from '@/src/models/booking-models';
 connectDB();
 
 interface Props {
     params: {
-        eventid: string
-    }
+        eventid: string;
+    };
 }
 
 async function BookEventPage({ params }: Props) {
-    const event: EventType = await EventModel.findById(params.eventid) as any;
+    const event: EventType = (await EventModel.findById(params.eventid)) as any;
+    const eventBookings = await BookingModel.find({ event: params.eventid });
+
     const getEventProperty = (property: string) => {
         return <div className='flex flex-col'>
             <h1 className='font-semibold capitalize'>{property}</h1>
@@ -49,7 +52,7 @@ async function BookEventPage({ params }: Props) {
                     {event.description}
                 </p>
 
-                <div className="mt-7 border border-gray-200 p-3 rounded-xl grid grid-cols-1 gap-5">
+                <div className="mt-7 border border-gray-200 p-3 rounded-xl grid grid-cols-3 gap-5">
                     {getEventProperty('organizer')}
                     {getEventProperty('location')}
                     {getEventProperty('date')}
@@ -59,8 +62,10 @@ async function BookEventPage({ params }: Props) {
                         <h1 className='font-semibold capitalize'>メインゲスト</h1>
                         <h1 className='text-gray-600'>{event.guests.join(", ")}</h1>
                     </div>
-                    <TicketSelection event={JSON.parse(JSON.stringify(event))} />
                 </div>
+                <TicketSelection event={JSON.parse(JSON.stringify(event))}
+                    eventBookings={JSON.parse(JSON.stringify(eventBookings))}
+                />
             </div>
         </div>
     )
