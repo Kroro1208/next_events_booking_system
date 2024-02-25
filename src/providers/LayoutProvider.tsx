@@ -42,7 +42,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
         },
         {
             title: "予約",
-            path: "user/bookings"
+            path: "/bookings"
         },
     ];
 

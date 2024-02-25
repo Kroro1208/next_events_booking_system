@@ -1,9 +1,7 @@
 import { handleNewUserRegistration, getMongoDBUserIDofLoggedInUser } from "../actions/users";
 import { connectDB } from "../config/dbConfig";
-import { UserButton } from "@clerk/nextjs";
 import EventModel from "../models/event-model";
 import { EventType } from "../interfaces/events";
-import Image from "next/image";
 import Link from "next/link";
 
 connectDB();

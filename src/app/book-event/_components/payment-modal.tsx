@@ -37,12 +37,11 @@ function PaymentModal({ showPaymentModal, setShowPaymentModal, event, ticketType
                 },
                 redirect: "if_required"
             });
-            setLoading(false);
+            console.log(result);
             if (result.error) {
                 toast.error(result.error.message!);
             } else {
                 toast.success('お支払いが完了しました');
-
                 const reqBody = {
                     event: event._id,
                     ticketType,
@@ -56,8 +55,8 @@ function PaymentModal({ showPaymentModal, setShowPaymentModal, event, ticketType
                 router.push("/bookings");
             }
         } catch (error: any) {
-            toast.error("お支払いが完了できません。お間違いがないようでしたらお問い合わせください");
-        } finally { setLoading(false) }
+            toast.error(`お支払いが完了できませんでした: ${error.message}`);
+        } finally { setLoading(false); }
     };
 
     return (
