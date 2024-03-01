@@ -23,9 +23,11 @@ export interface EventType {
 }
 
 export interface BookingType {
+  _id: string;
   event: EventType;
   ticketType: string;
-  ticketsCount: number;
-  _id: string;
+  ticketCount: number;
+  totalAmount: number;
+  paymentId: string;
   createdAt: string;
 }
