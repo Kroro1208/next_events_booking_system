@@ -55,6 +55,7 @@ function PaymentModal({ showPaymentModal, setShowPaymentModal, event, ticketType
                 router.push("/bookings");
             }
         } catch (error: any) {
+            console.log(error);
             toast.error(`お支払いが完了できませんでした: ${error.message}`);
         } finally { setLoading(false); }
     };

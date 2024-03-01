@@ -76,7 +76,13 @@ function TicketSelection({ event, eventBookings }: TicketSelectionProps) {
             setClientSecret(response.data.clientSecret);
             console.log('clientSecret set to:', response.data.clientSecret);
         } catch (error: any) {
-            toast.error(error.message);
+            if (axios.isAxiosError(error) && error.response) {
+                // サーバーからのレスポンスがある場合、そのメッセージを表示
+                toast.error(error.response.data.message);
+            } else {
+                // レスポンスがない場合のエラーメッセージ
+                toast.error("予期せぬエラーが発生しました");
+            }
         } finally {
             setLoading(false);
         }

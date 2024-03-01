@@ -20,6 +20,16 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ clientSecret: clientSecret });
   } catch (error: any) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    console.log(error);
+
+    // Stripe APIエラーの詳細を抽出
+    const errorMessage = error.type
+      ? `${error.type}: ${error.message}`
+      : error.message;
+    const errorStatusCode = error.statusCode ? error.statusCode : 500;
+    return NextResponse.json(
+      { message: errorMessage },
+      { status: errorStatusCode }
+    );
   }
 }
