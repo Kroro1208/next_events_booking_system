@@ -11,20 +11,25 @@ const bookingSchema = new mongoose.Schema(
       ref: "user",
     },
     paymentId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: "true",
+      type: String,
+      required: true,
     },
     ticketType: {
       type: String,
-      required: "true",
+      required: true,
     },
     ticketCount: {
       type: Number,
-      required: "true",
+      required: true,
     },
     totalAmount: {
       type: Number,
-      required: "true",
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      default: "booked",
     },
   },
   { timestamps: true }
