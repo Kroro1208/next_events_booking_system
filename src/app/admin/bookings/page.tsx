@@ -1,16 +1,15 @@
-import { getMongoDBUserIDofLoggedInUser } from '@/src/actions/users'
 import PageTitle from '@/src/components/PageTitle'
 import { connectDB } from '@/src/config/dbConfig'
-import { BookingType, EventType } from '@/src/interfaces/events'
+import { BookingType } from '@/src/interfaces/events'
 import BookingModel from '@/src/models/booking-models'
 import React from 'react'
 
 connectDB();
 
 async function BookingsPage() {
-    const mongoUserId = await getMongoDBUserIDofLoggedInUser();
-    const bookedEvents: BookingType[] = (await BookingModel.find({ user: mongoUserId }).populate(
-        "event")) as any;
+    const bookedEvents: BookingType[] = (await BookingModel.find({})
+        .populate("event")
+        .populate('user')) as any;
     console.log(bookedEvents);
 
     const getProperty = ({ key, value }: { key: string; value: any; }) => {
@@ -24,17 +23,16 @@ async function BookingsPage() {
 
     return (
         <div>
-            <PageTitle title="予約中のイベント" />
+            <PageTitle title="全てのイベント" />
             <div className='flex flex-col gap-5 mt-5'>
                 {bookedEvents.map((booking) => {
                     return (
                         <div key={booking._id} className='border border-gray-300 p-3 bg-gray-100 flex flex-col gap-5 rounded-xl'>
-                            <div className='bg-gray-500 p-3 text-white rounded-xl'>
-                                <h1 className='text-2xl font-semibold'>
+                            <div className='p-5 text-white lg:w-full bg-gradient-to-tr rounded-xl from-pink-500 to-yellow-500 shadow-lg'>
+                                <h1 className='text-2xl font-semibold mb-3'>
                                     {booking.event.name}
                                 </h1>
-                                <div className='flex flex-col gap-3 bg-gradient-to-tr rounded-xl p-5 from-pink-500 to-yellow-500 text-white shadow-lg'>
-                                    <h1 className="text-3xl">{booking.event.name}</h1>
+                                <div className='flex flex-col gap-3'>
                                     <div className="text-sm flex gap-10 ">
                                         <h1>
                                             <i className="ri-map-pin-line pr-3"></i>
@@ -49,6 +47,8 @@ async function BookingsPage() {
                             </div>
                             <div className='grid grid-cols-3 gap-5 p-5'>
                                 {getProperty({ key: "予約ID", value: booking._id })}
+                                {getProperty({ key: "ユーザーID", value: booking.user._id })}
+                                {getProperty({ key: "ユーザー名", value: booking.user.username })}
                                 {getProperty({ key: "チケットの種類", value: booking.ticketType })}
                                 {getProperty({ key: "購入枚数", value: `${booking.ticketCount} 枚` })}
                                 {getProperty({ key: "合計金額", value: `${booking.totalAmount} 円` })}

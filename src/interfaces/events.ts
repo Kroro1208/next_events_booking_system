@@ -24,10 +24,12 @@ export interface EventType {
 
 export interface BookingType {
   _id: string;
+  user: any;
   event: EventType;
   ticketType: string;
   ticketCount: number;
   totalAmount: number;
   paymentId: string;
   createdAt: string;
+  status: string;
 }
