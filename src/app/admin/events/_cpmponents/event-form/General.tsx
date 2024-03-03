@@ -100,8 +100,8 @@ function General({ event, setEvent, activeStep, setActiveStep }: EventFormStepPr
       </div>
 
       <div className="flex justify-center gap-5">
-        <Button onClick={() => { }}>登録キャンセル</Button>
-        <Button onClick={() => setActiveStep(activeStep + 1)} color='primary'
+        <Button onClick={() => { }} className='hover:bg-red-500 hover:text-white hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'>登録キャンセル</Button>
+        <Button onClick={() => setActiveStep(activeStep + 1)} color='primary' className='hover:bg-indigo-600 hover:text-white hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'
           isDisabled={!event?.name || !event?.organizer || !event?.description}
         >次の入力画面へ</Button>
       </div>

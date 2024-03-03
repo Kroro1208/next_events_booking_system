@@ -76,8 +76,9 @@ function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setAct
             </div>
 
             <div className="flex justify-center gap-5">
-                <Button onClick={() => { setActiveStep(activeStep - 1) }}>戻る</Button>
+                <Button onClick={() => { setActiveStep(activeStep - 1) }} className='hover:bg-red-500 hover:text-white hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'>戻る</Button>
                 <Button onClick={() => setActiveStep(activeStep + 1)} color='primary'
+                    className='hover:bg-indigo-600 hover:text-white hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'
                 >次の入力画面へ</Button>
             </div>
         </div>

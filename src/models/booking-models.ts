@@ -29,7 +29,7 @@ const bookingSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      default: "booked",
+      default: "予約済み",
     },
   },
   { timestamps: true }

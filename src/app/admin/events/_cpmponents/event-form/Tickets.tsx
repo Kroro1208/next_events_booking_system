@@ -68,7 +68,9 @@ function Tickets({ event, setEvent, activeStep, setActiveStep, loading }: EventF
             <Button className='mt-10 bg-blue-600 text-white'
                 onClick={onAddTicketType}><i className="ri-coupon-3-line"></i>チケットの種類を追加する</Button>
             <div className="flex justify-center gap-5">
-                <Button onClick={() => { setActiveStep(activeStep - 1) }}>戻る</Button>
+                <Button onClick={() => { setActiveStep(activeStep - 1) }}
+                    className='hover:bg-red-500 hover:text-white hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'
+                >戻る</Button>
                 <Button type='submit' color='primary'
                     // ticketTypes配列が空ではないことを確認(everyメソッドは空の配列に対してtrueを返すため、ボタンが活性化されてしまう問題)
                     isDisabled={!(event?.ticketTypes?.length > 0) || !event?.ticketTypes?.every((ticketType: any) =>
@@ -76,7 +78,7 @@ function Tickets({ event, setEvent, activeStep, setActiveStep, loading }: EventF
                         ticketType.price > 0 &&
                         ticketType.limit > 0
                     )} isLoading={loading}
-                    className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out"
+                    className='hover:bg-indigo-600 hover:text-white hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'
                 >登録する</Button>
             </div>
         </div>

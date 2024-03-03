@@ -4,6 +4,7 @@ import { connectDB } from '@/src/config/dbConfig'
 import { BookingType, EventType } from '@/src/interfaces/events'
 import BookingModel from '@/src/models/booking-models'
 import React from 'react'
+import dayjs from "dayjs";
 
 connectDB();
 
@@ -53,7 +54,8 @@ async function BookingsPage() {
                                 {getProperty({ key: "購入枚数", value: `${booking.ticketCount} 枚` })}
                                 {getProperty({ key: "合計金額", value: `${booking.totalAmount} 円` })}
                                 {getProperty({ key: "お支払いID", value: booking.paymentId })}
-
+                                {getProperty({ key: "予約日", value: dayjs(booking.createdAt).format('YYYY/MM/DD hh:mm A') })}
+                                {getProperty({ key: "ステータス", value: booking.status || "予約済み" })}
                             </div>
                         </div>
                     );

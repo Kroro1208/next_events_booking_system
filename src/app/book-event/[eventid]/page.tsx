@@ -14,7 +14,7 @@ interface Props {
 
 async function BookEventPage({ params }: Props) {
     const event: EventType = (await EventModel.findById(params.eventid)) as any;
-    const eventBookings = await BookingModel.find({ event: params.eventid });
+    const eventBookings = await BookingModel.find({ event: params.eventid, status: '予約済み' });
 
     const getEventProperty = (property: string) => {
         return <div className='flex flex-col'>
