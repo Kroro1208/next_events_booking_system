@@ -1,7 +1,7 @@
-import { connectDB } from "@/config/dbConfig";
-import BookingModel from "@/models/booking-model";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
+import { connectDB } from "@/src/config/dbConfig";
+import BookingModel from "@/src/models/booking-models";
 
 connectDB();
 
@@ -16,7 +16,7 @@ export async function PUT(
         const reqBody = await request.json();
         await BookingModel.findByIdAndUpdate(params.bookingid, reqBody);
         return NextResponse.json(
-            { message: "Booking updated successfully" },
+            { message: "予約の更新が完了しました" },
             { status: 201 }
         );
     } catch (error: any) {

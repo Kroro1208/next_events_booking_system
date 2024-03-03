@@ -12,7 +12,7 @@ function CancelBookingButton({ booking }: { booking: BookingType }) {
     const cancelBooking = async () => {
         try {
             setLoading(true);
-            await axios.put(`/api/booking/${booking._id}`, {
+            await axios.put(`/api/bookings/${booking._id}`, {
                 status: 'cancelled'
             });
             toast.success('イベントをキャンセルしました');
