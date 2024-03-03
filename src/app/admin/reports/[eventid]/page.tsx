@@ -36,7 +36,7 @@ async function EventReportsPage({ params }: Props) {
     return (
         <div>
             <div className='flex flex-col gap-3 bg-gradient-to-tr rounded-xl p-5 from-pink-500 to-yellow-500 text-white shadow-lg'>
-                <h1 className="text-3xl">{event.name} - Reports</h1>
+                <h1 className="text-3xl">Report of {event.name}</h1>
                 <div className="text-sm flex gap-10 ">
                     <h1>
                         <i className="ri-map-pin-line pr-3"></i>
@@ -54,19 +54,19 @@ async function EventReportsPage({ params }: Props) {
                         <h1 className='font-semibold text-lg'>{ticketType}</h1>
                         <div className='flex flex-col gap-1 mt-2 font-semibold'>
                             <span className='text-sm text-gray-600 flex justify-between items-center'>
-                                Ticket Sold{" "}
+                                Ticket Sold{""}
                             </span>
                             <span className='text-sm text-gray-600 flex justify-between items-center'>
                                 Revenue{""}
-                                <b>${ticketTypeAndTheirRevenue[ticketType].revenue}</b>
+                                <b>{ticketTypeAndTheirRevenue[ticketType].revenue}円</b>
                             </span>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className='mt-5 bg-white rounded-xl shadow-md p-5 flex justify-between'>
+            <div className='mt-5 bg-white rounded-xl shadow border p-5 flex justify-between'>
                 <h1 className='text-3xl font-semibold'>合計収支</h1>
-                <h1 className='text-3xl font-semibold'>${totalRevenue}</h1>
+                <h1 className='text-3xl font-semibold'>{totalRevenue}円</h1>
             </div>
         </div>
     );
