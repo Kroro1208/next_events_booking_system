@@ -40,8 +40,9 @@ async function BookEventPage({ params }: Props) {
 
             <div className='p-3'>
                 <div className="flex gap-5 flex-wrap overflow-x-auto mt-10">
-                    {event.images.map((image) => (
+                    {event.images.map((image, index) => (
                         <img src={image}
+                            key={index}
                             alt="picture of the event"
                             height={280} width={400}
                             className="rounded-xl"

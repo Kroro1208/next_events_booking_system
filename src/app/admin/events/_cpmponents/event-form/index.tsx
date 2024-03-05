@@ -80,10 +80,10 @@ function EventForm({ initialData, type = "create" }: Props) {
             <form onSubmit={onSubmit}>
                 <Steps stepNames={['General', 'Location & Date', 'Media', 'Tickets']}
                     stepsContent={[
-                        <General {...commonProps} />,
-                        <LocationAndDate {...commonProps} />,
-                        <Media {...commonProps} />,
-                        <Tickets {...commonProps} />]}
+                        <General key="General" {...commonProps} />,
+                        <LocationAndDate key="LocationAndDate" {...commonProps} />,
+                        <Media key="Media" {...commonProps} />,
+                        <Tickets key="Tickets" {...commonProps} />]}
                     activeStep={activeStep}
                 />
             </form>

@@ -31,7 +31,7 @@ async function BookingsPage() {
                     return (
                         <div key={booking._id} className='border border-gray-300 p-3 bg-gray-100 flex flex-col gap-5 rounded-xl'>
                             <div className='flex justify-between md:items-center p-5 text-white lg:w-full bg-gradient-to-tr rounded-xl from-gray-800 to-slate-500 shadow-lg'>
-                                <div>
+                                <div className='lg:w-full'>
                                     <h1 className='md:text-2xl text-xl font-semibold mb-3'>{booking.event.name}</h1>
                                     <div className='flex flex-col gap-3'>
                                         <div className="text-sm flex md:flex-row flex-col gap-5 md:gap-10 ">

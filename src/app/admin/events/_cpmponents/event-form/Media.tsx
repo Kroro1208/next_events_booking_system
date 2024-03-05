@@ -53,8 +53,8 @@ function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setAct
             <div className='flex gap-5'>
 
                 {previousImages?.map((image: any, index: number) => (
-                    <div className="border-2 border-gray-300 flex flex-col gap-5 rounded-xl pb-5">
-                        <img key={index} src={image} alt="newly selected"
+                    <div key={index} className="border-2 border-gray-300 flex flex-col gap-5 rounded-xl pb-5">
+                        <img src={image} alt="newly selected"
                             className='w-40 h-40 object-cover rounded-xl'
                         />
                         <h1 className='text-center cursor-pointer text-sm underline'
@@ -64,8 +64,8 @@ function Media({ newlySelectedImages, setNewlySelectedImages, activeStep, setAct
                 ))}
 
                 {newlySelectedImages?.map((image: any, index: number) => (
-                    <div className="border-2 border-gray-300 flex flex-col gap-5 rounded-xl pb-5">
-                        <img key={index} src={image.url} alt="newly selected"
+                    <div key={index} className="border-2 border-gray-300 flex flex-col gap-5 rounded-xl pb-5">
+                        <img src={image.url} alt="newly selected"
                             className='w-40 h-40 object-cover rounded-xl'
                         />
                         <h1 className='text-center cursor-pointer text-sm underline'

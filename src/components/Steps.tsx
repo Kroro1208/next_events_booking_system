@@ -12,7 +12,7 @@ function Steps({ stepNames, stepsContent, activeStep }: StepsProps) {
             <div className="flex justify-between">
                 {stepNames.map((stepName, index) => {
                     return (
-                        <div
+                        <div key={index}
                             className={`flex flex-col gap-2 ${index !== stepNames.length - 1 && "w-full"}`}>
                             <div className="flex items-center">
                                 <div // 数字の表示部分
@@ -23,7 +23,7 @@ function Steps({ stepNames, stepsContent, activeStep }: StepsProps) {
                                         }`}>
                                     {index + 1}
                                 </div>
-                                {/* ゲージバー表示部分: Steps.tsx, General.tsx, event-form/index.tsxを確認 */} 
+                                {/* ゲージバー表示部分: Steps.tsx, General.tsx, event-form/index.tsxを確認 */}
                                 {activeStep > index && index !== stepNames.length - 1 && ( // setActive()によりactiveStepが更新された時
                                     <div className="h-1 w-full bg-blue-600"></div>
                                 )}

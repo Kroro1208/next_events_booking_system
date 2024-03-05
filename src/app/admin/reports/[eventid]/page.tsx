@@ -53,7 +53,7 @@ async function EventReportsPage({ params }: Props) {
             </h1>
             <div className='grid grid-cols-1 md:grid-cols-4 mt-5 gap-5'>
                 {Object.keys(ticketTypeAndTheirRevenue).map((ticketType) => (
-                    <div className='p-3 bg-white rounded-xl  shadow border'>
+                    <div key={ticketType} className='p-3 bg-white rounded-xl  shadow border'>
                         <h1 className='font-semibold text-lg'>{ticketType}</h1>
                         <div className='flex flex-col gap-1 mt-2 font-semibold'>
                             <span className='text-sm text-gray-600 flex justify-between items-center'>

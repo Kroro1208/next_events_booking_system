@@ -93,7 +93,7 @@ function General({ event, setEvent, activeStep, setActiveStep }: EventFormStepPr
 
       <div className="flex flex-wrap gap-5">
         {event?.guests?.map((guest: string, index: number) => (
-          <Chip onClose={() => onGuestRemove(index)}>
+          <Chip key={index} onClose={() => onGuestRemove(index)}>
             {guest}
           </Chip>
         ))}
