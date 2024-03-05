@@ -3,16 +3,42 @@ import { connectDB } from "../config/dbConfig";
 import EventModel from "../models/event-model";
 import { EventType } from "../interfaces/events";
 import Link from "next/link";
+import Filters from "../components/Filters";
 
 connectDB();
 
-export default async function Home() {
+interface Props {
+  searchParams: {
+    name: string;
+    date: string;
+  };
+}
+
+export default async function Home({ searchParams }: Props) {
   await handleNewUserRegistration();
   await getMongoDBUserIDofLoggedInUser();
+  let filters = {};
+  if (searchParams.name) {
+    filters = {
+      name: {
+        $regex: searchParams.name,
+        $options: "i" // 大文字小文字を区別しないオプションi
+      },
+    };
+  }
 
-  const events: EventType[] = await EventModel.find({}).sort({ createdAt: -1 }) as any;
+  if (searchParams.date) {
+    filters = {
+      ...filters,
+      date: searchParams.date
+    };
+  }
+
+  console.log(searchParams);
+  const events: EventType[] = await EventModel.find(filters).sort({ createdAt: -1 }) as any;
   return (
     <div>
+      <Filters />
       <div className="flex flex-col gap-5">
         {events.map((event) => (
           <div key={event._id}
@@ -54,6 +80,13 @@ export default async function Home() {
           </div>
         ))}
       </div>
+      {events.length === 0 && (
+        <div className="w-full mt-100 flex justify-center">
+          <h1 className="text-sm">
+            一致するイベントはありません
+          </h1>
+        </div>
+      )}
     </div>
   );
 }
