@@ -25,7 +25,7 @@ function CancelBookingButton({ booking }: { booking: BookingType }) {
     };
 
     return (
-        <div>
+        <div className='p-3 flex justify-end'>
             <Button
                 className='text-gray-800 bg-yellow-500 hover:bg-yellow-300 hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 ease-in-out'
                 isLoading={loading}

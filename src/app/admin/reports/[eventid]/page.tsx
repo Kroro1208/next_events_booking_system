@@ -36,8 +36,8 @@ async function EventReportsPage({ params }: Props) {
     return (
         <div>
             <div className='flex flex-col gap-3 bg-gradient-to-tr rounded-xl p-5 from-pink-500 to-yellow-500 text-white shadow-lg'>
-                <h1 className="text-3xl">Report of {event.name}</h1>
-                <div className="text-sm flex gap-10 ">
+                <h1 className="text-xl md:text-3xl">Report of {event.name}</h1>
+                <div className="text-sm flex md:flex-row flex-col gap-3 md:gap-10 ">
                     <h1>
                         <i className="ri-map-pin-line pr-3"></i>
                         {event.location}
@@ -48,6 +48,9 @@ async function EventReportsPage({ params }: Props) {
                     </h1>
                 </div>
             </div>
+            <h1 className='text-2xl font-semibold mt-5'>
+                チケット種類ごとの売り上げ
+            </h1>
             <div className='grid grid-cols-1 md:grid-cols-4 mt-5 gap-5'>
                 {Object.keys(ticketTypeAndTheirRevenue).map((ticketType) => (
                     <div className='p-3 bg-white rounded-xl  shadow border'>

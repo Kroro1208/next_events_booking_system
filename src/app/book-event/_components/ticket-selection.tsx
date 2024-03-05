@@ -125,7 +125,7 @@ function TicketSelection({ event, eventBookings }: TicketSelectionProps) {
                 </div>
             </div>
             <div className='mt-7 bg-gray-100 border border-gray-200 p-3 rounded flex justify-between items-center'>
-                <h1 className='font-semibold text-2xl uppercase text-gray-500'>
+                <h1 className='font-semibold text-xl md:text-2xl uppercase text-gray-500'>
                     合計: <b className='text-primary'>{totalAmount} 円</b>
                 </h1>
                 <Button onClick={() =>

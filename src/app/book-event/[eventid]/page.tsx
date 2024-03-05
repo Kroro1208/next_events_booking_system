@@ -25,7 +25,7 @@ async function BookEventPage({ params }: Props) {
     return (
         <div className='bg-white rounded-xl p-3 shadow-2xl'>
             <div className='flex flex-col gap-3 bg-gradient-to-tr rounded-xl p-5 from-pink-500 to-yellow-500 text-white shadow-lg'>
-                <h1 className="text-3xl">{event.name}</h1>
+                <h1 className="md:text-3xl text-xl">{event.name}</h1>
                 <div className="text-sm flex gap-10 ">
                     <h1>
                         <i className="ri-map-pin-line pr-3"></i>
@@ -52,7 +52,7 @@ async function BookEventPage({ params }: Props) {
                     {event.description}
                 </p>
 
-                <div className="mt-7 border border-gray-200 p-3 rounded-xl grid grid-cols-3 gap-5">
+                <div className="mt-7 border border-gray-200 p-3 rounded-xl grid grid-cols-1 md:grid-cols-3 gap-5">
                     {getEventProperty('organizer')}
                     {getEventProperty('location')}
                     {getEventProperty('date')}

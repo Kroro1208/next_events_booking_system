@@ -42,7 +42,7 @@ export default async function Home({ searchParams }: Props) {
       <div className="flex flex-col gap-5">
         {events.map((event) => (
           <div key={event._id}
-            className="grid grid-cols-3 bg-sky-100 rounded-xl gap-10 p-5 shadow-xl"
+            className="grid grid-cols-1 md:grid-cols-3 bg-sky-100 rounded-xl md:gap-10 p-5 shadow-xl"
           >
             <div className="col-span-1">
               <img src={event.images[0]} //<Image />コンポーネントだと画像の最適化が自動で行われて画質が悪くなったので通常のimgタグにした
@@ -51,7 +51,7 @@ export default async function Home({ searchParams }: Props) {
                 className="w-full object-contain rounded-xl"
               />
             </div>
-            <div className="col-span-2 flex flex-col gap-5 justify-between">
+            <div className="col-span-2 flex flex-col mt-4 gap-5 justify-between">
               <h1 className="font-semibold text-gray-700 text-3xl">
                 {event.name}
               </h1>

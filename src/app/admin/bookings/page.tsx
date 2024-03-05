@@ -30,11 +30,11 @@ async function BookingsPage() {
                 {bookedEvents.map((booking) => {
                     return (
                         <div key={booking._id} className='border border-gray-300 p-3 bg-gray-100 flex flex-col gap-5 rounded-xl'>
-                            <div className='flex justify-between items-center p-5 text-white lg:w-full bg-gradient-to-tr rounded-xl from-gray-800 to-slate-500 shadow-lg'>
+                            <div className='flex justify-between md:items-center p-5 text-white lg:w-full bg-gradient-to-tr rounded-xl from-gray-800 to-slate-500 shadow-lg'>
                                 <div>
-                                    <h1 className='text-2xl font-semibold mb-3'>{booking.event.name}</h1>
+                                    <h1 className='md:text-2xl text-xl font-semibold mb-3'>{booking.event.name}</h1>
                                     <div className='flex flex-col gap-3'>
-                                        <div className="text-sm flex gap-10 ">
+                                        <div className="text-sm flex md:flex-row flex-col gap-5 md:gap-10 ">
                                             <h1>
                                                 <i className="ri-map-pin-line pr-3"></i>
                                                 {booking.event.location}
@@ -50,7 +50,7 @@ async function BookingsPage() {
                                     <CancelBookingButton booking={JSON.parse(JSON.stringify(booking))} />}
                             </div>
 
-                            <div className='grid grid-cols-3 gap-5 p-5'>
+                            <div className='grid grid-cols-1 md:grid-cols-3 gap-5 p-5'>
                                 {getProperty({ key: "予約ID", value: booking._id })}
                                 {getProperty({ key: "ユーザーID", value: booking.user._id })}
                                 {getProperty({ key: "ユーザー名", value: booking.user.username })}
