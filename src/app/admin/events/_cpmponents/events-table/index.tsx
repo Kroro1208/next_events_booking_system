@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 function EventsTable({ events }: { events: EventType[] }) {
 
     const router = useRouter();
-    const [selectedIdToDelete, setSelectedIdToDelete] = useState();
+    const [selectedIdToDelete, setSelectedIdToDelete] = useState("");
     const [loading, setLoading] = useState(false);
 
     const onDelete = async (id: string) => {
