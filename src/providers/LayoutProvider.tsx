@@ -71,12 +71,6 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
-    useEffect(() => {
-        if (isAdmin && pathname.includes('/admin')) {
-            router.push('/')
-        }
-    }, [pathname]);
-
     return (
         <div className='bg-gray-200 w-full lg:px-20 px-5'>
             {isPrivateRoute && (
