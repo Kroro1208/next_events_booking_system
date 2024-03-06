@@ -11,6 +11,7 @@ import 'remixicon/fonts/remixicon.css'
 
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const menusForAdmin = [
         {
@@ -55,6 +56,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
             const response = await axios.get('/api/current-user');
             if (response.data.user.isAdmin) {
                 setMenusToShow(menusForAdmin);
+                setIsAdmin(true);
             } else {
                 setMenusToShow(menusForUser);
             }
@@ -68,6 +70,12 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
             getUserData();
         }
     }, []);
+
+    useEffect(() => {
+        if (isAdmin && pathname.includes('/admin')) {
+            router.push('/')
+        }
+    }, [pathname]);
 
     return (
         <div className='bg-gray-200 w-full lg:px-20 px-5'>
@@ -97,10 +105,9 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
                             afterSignOutUrl="/" />
                     </div>
                 </div>
-            )
-            }
+            )}
 
-            <div className='py-5'>{children}</div>
+            <div className='py-5'>{!isAdmin && pathname.includes('admin') ? "このページは管理者のみ閲覧可能です" : children}</div>
         </div >
     )
 }
