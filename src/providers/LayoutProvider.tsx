@@ -50,7 +50,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const router = useRouter();
     const [menusToShow, setMenusToShow] = useState<any[]>([]);
-    const isPrivateRoute = !['sign-in', 'sign-up'].includes(pathname);
+    const isPrivateRoute = !['/sign-in', '/sign-up'].includes(pathname);
     const getUserData = async () => {
         try {
             const response = await axios.get('/api/current-user');
