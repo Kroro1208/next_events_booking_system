@@ -44,8 +44,8 @@ async function BookEventPage({ params }: Props) {
                         <img src={image}
                             key={index}
                             alt="picture of the event"
-                            height={280} width={400}
-                            className="rounded-xl"
+                            height={280} width={280}
+                            className="rounded-xl object-cover"
                         />
                     ))}
                 </div>
